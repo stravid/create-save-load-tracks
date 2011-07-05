@@ -1,0 +1,26 @@
+section#grid-container {
+  width: 300px;
+  margin-right: 50px;
+
+  float: left;
+}
+
+section#bricks-container {
+  background: green;
+  
+  width: 100px;
+  margin-right: 50px;
+
+  float: left;
+}
+
+section#tracks-container {
+  background: blue;
+  
+  width: 300px;
+
+  float: left;
+}
+
+canvas#grid {
+}
