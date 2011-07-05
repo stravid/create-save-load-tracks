@@ -1,3 +1,7 @@
+body {
+  font-family: Helvetica, Arial, san-serif;
+}
+
 section#grid-container {
   width: 300px;
   margin-right: 50px;
@@ -14,9 +18,7 @@ section#bricks-container {
   float: left;
 }
 
-section#tracks-container {
-  background: blue;
-  
+section#tracks-container {  
   width: 300px;
 
   float: left;
@@ -27,4 +29,8 @@ canvas#grid {
 
 button#save, input#track-name {
   float: right;
+}
+
+section#tracks-container h1 {
+  margin: 0;
 }
