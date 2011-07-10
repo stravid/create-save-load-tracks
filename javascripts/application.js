@@ -9,11 +9,15 @@ var gridWidth = numberOfColumns * brickSize;
 var gridHeight = numberOfRows * brickSize;
 var canvasWidth = 301;
 var canvasHeight = 451;
+var selectedBrickClass = Square;
 
 $(document).ready(function() {
+	
   setupGrid();
-
   drawGrid();
+	
+	gridCanvasElement.onmouseup = onGridClicked;
+	
 });
 
 function setupGrid() {
@@ -47,3 +51,20 @@ function drawGrid() {
 
   gridDrawingContext.stroke();
 };
+
+function onGridClicked(event) {
+  var column = Math.floor(event.offsetX / brickSize);
+  var row = Math.floor(event.offsetY / brickSize);
+	
+  createBrickAt(column, row);
+}
+
+function createBrickAt(column, row) {
+	var brick = new selectedBrickClass();
+	
+	brick.column = column;
+	brick.row = row;
+	
+	brick.draw(gridDrawingContext);
+}
+
