@@ -9,16 +9,25 @@ var gridWidth = numberOfColumns * brickSize;
 var gridHeight = numberOfRows * brickSize;
 var canvasWidth = 301;
 var canvasHeight = 451;
-var selectedBrickClass = Square;
+
+var selectedBrickClass = null;
+var bricksOnGrid = [];
 
 $(document).ready(function() {
-	
   setupGrid();
   drawGrid();
 	
+	initUI();
+});
+
+function initUI() {
+	
 	gridCanvasElement.onmouseup = onGridClicked;
 	
-});
+	document.getElementById("square-brick").onmouseup = function() { setBrick("Square") };
+	document.getElementById("triangle-brick").onmouseup = function() { setBrick("Triangle") };
+	
+}
 
 function setupGrid() {
   gridCanvasElement = document.getElementById('grid');
@@ -60,11 +69,29 @@ function onGridClicked(event) {
 }
 
 function createBrickAt(column, row) {
+	if (!selectedBrickClass) return;
+	
 	var brick = new selectedBrickClass();
 	
 	brick.column = column;
 	brick.row = row;
 	
 	brick.draw(gridDrawingContext);
+	
+	bricksOnGrid.push(brick);
+}
+
+function setBrick(mode) {
+	
+	switch (mode) {
+		
+		case "Square": 
+			selectedBrickClass = Square;    
+		break;
+		
+		case "Triangle":
+			selectedBrickClass = Triangle;
+		break;
+	}
 }
 

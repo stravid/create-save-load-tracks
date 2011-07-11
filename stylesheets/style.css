@@ -10,8 +10,6 @@ section#grid-container {
 }
 
 section#bricks-container {
-  background: green;
-  
   width: 100px;
   margin-right: 50px;
 

@@ -1,10 +1,10 @@
-var Square = function() {
+var Triangle = function() {
   this.row = 0;
   this.column = 0;
-	this.type = "Square";
+	this.type = "Triangle";
 }
 
-Square.prototype.draw = function(context) {
+Triangle.prototype.draw = function(context) {
 	
   context.save();
 	
@@ -13,7 +13,6 @@ Square.prototype.draw = function(context) {
 	
   context.fillColor = 0;
   context.moveTo(0, 0);
-  context.lineTo(brickSize, 0);
   context.lineTo(brickSize, brickSize);
   context.lineTo(0, brickSize);
 	
