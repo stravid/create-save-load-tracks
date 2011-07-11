@@ -12,6 +12,7 @@ var canvasHeight = 451;
 
 var selectedBrickClass = null;
 var bricksOnGrid = [];
+var currentButton = null;
 
 $(document).ready(function() {
   setupGrid();
@@ -24,8 +25,8 @@ function initUI() {
 	
 	gridCanvasElement.onmouseup = onGridClicked;
 	
-	document.getElementById("square-brick").onmouseup = function() { setBrick("Square") };
-	document.getElementById("triangle-brick").onmouseup = function() { setBrick("Triangle") };
+	document.getElementById("square-brick").onmouseup = function() { setBrick("square-brick") };
+	document.getElementById("triangle-brick").onmouseup = function() { setBrick("triangle-brick") };
 	
 }
 
@@ -81,15 +82,22 @@ function createBrickAt(column, row) {
 	bricksOnGrid.push(brick);
 }
 
-function setBrick(mode) {
+function setBrick(buttonID) {
 	
-	switch (mode) {
+	if (currentButton) {
+		currentButton.removeAttr("disabled");
+	}
+	
+	currentButton = $("#" + buttonID);
+	currentButton.attr("disabled", "disabled");
+	
+	switch (buttonID) {
 		
-		case "Square": 
+		case "square-brick": 
 			selectedBrickClass = Square;    
 		break;
 		
-		case "Triangle":
+		case "triangle-brick":
 			selectedBrickClass = Triangle;
 		break;
 	}
