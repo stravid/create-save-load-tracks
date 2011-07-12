@@ -29,10 +29,23 @@ function initUI() {
 	
 	gridCanvasElement.onmouseup = onGridClicked;
 	
+	/* TODO: Refactor to jQuery */
 	document.getElementById("square-brick").onmouseup = function() { setBrick("square-brick") };
 	document.getElementById("triangle-brick").onmouseup = function() { setBrick("triangle-brick") };
 	
-	document.getElementById("save-track").onmouseup = onSaveTrack;
+	$("#save-track").click(function(event) {
+		event.preventDefault();
+		store.saveTrack(bricksOnGrid);
+	});
+	
+	$("#clear-track").click(function(event) {
+		event.preventDefault();
+		
+		setupGrid();
+		drawGrid();
+		
+		bricksOnGrid = [];
+	});
 	
 }
 
@@ -67,10 +80,6 @@ function drawGrid() {
 
   gridDrawingContext.stroke();
 };
-
-function onSaveTrack() {
-	store.saveTrack(bricksOnGrid);
-}
 
 function onGridClicked(event) {
   var column = Math.floor(event.offsetX / brickSize);

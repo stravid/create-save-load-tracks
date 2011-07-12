@@ -4,16 +4,22 @@ var Store = function() {
 
 Store.prototype.saveTrack = function(brickArray) {
 	
-	var saveString = "";
-	
-	for (var i = 0; i < brickArray.length; i++) {
-		if (saveString.length > 0) saveString += ";";
-		saveString += brickArray[i].toString();
-	}
-	
-	return id;
+	var bricksValues = brickArray.map(this.getBrickData);
+	var bricksValuesJSON = JSON.stringify(brickArray);
+
+	return 0;
 }
 
 Store.prototype.getTrack = function(id) {
 	
+}
+
+Store.prototype.getBrickData = function(brick) {
+	var values = {};
+	
+	values.column = brick.column;
+	values.row = brick.row;
+	values.type = brick.type;
+	
+	return values;
 }
