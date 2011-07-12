@@ -103,10 +103,8 @@ function createBrickAt(column, row) {
 	if (!selectedBrickClass) return;
 	
 	var brick = new selectedBrickClass();
-	
 	brick.column = column;
 	brick.row = row;
-	
 	brick.draw(gridDrawingContext);
 	
 	bricksOnGrid.push(brick);

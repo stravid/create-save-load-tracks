@@ -4,19 +4,19 @@ var Store = function() {
 
 Store.prototype.saveTrack = function(brickArray) {
 	
-	var bricksValues = brickArray.map(this.getDataForBrick);
-	var bricksValuesJSON = JSON.stringify(brickArray);
+	var brickValues = brickArray.map(this.getDataForBrick);
+	var trackJSON = JSON.stringify(brickArray);
 	
 	/* this would be where one could send the data to an actual 
 	   database - in this example it's only saved array  */
-	this.tracks.push(bricksValuesJSON);
+	this.tracks.push(trackJSON);
 
 	return this.tracks.length - 1;
 }
 
 Store.prototype.getTrack = function(id) {
-	var bricksValuesJSON = this.tracks[id];
-	var bricksValues = JSON.parse(bricksValuesJSON);
+	var trackJSON = this.tracks[id];
+	var bricksValues = JSON.parse(trackJSON);
 	
 	return bricksValues.map(this.getBrickForData);
 }
