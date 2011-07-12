@@ -27,12 +27,21 @@ $(document).ready(function() {
 
 function initUI() {
 	
+	/* ---- Canvas Handler ----*/
 	gridCanvasElement.onmouseup = onGridClicked;
 	
-	/* TODO: Refactor to jQuery */
-	document.getElementById("square-brick").onmouseup = function() { setBrick("square-brick") };
-	document.getElementById("triangle-brick").onmouseup = function() { setBrick("triangle-brick") };
+	/* ---- Brick Button Handler ----*/
+	$("#square-brick").click(function(event) {
+		event.preventDefault();
+		setBrick("square-brick");
+	});
 	
+	$("#triangle-brick").click(function(event) {
+		event.preventDefault();
+		setBrick("triangle-brick");
+	});
+	
+	/* ---- Clear & Save Button Handlers ----*/
 	$("#save-track").click(function(event) {
 		event.preventDefault();
 		
