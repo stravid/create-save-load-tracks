@@ -17,13 +17,18 @@ var currentButton = null;
 var store;
 
 $(document).ready(function() {
-  setupGrid();
-  drawGrid();
-	
+
+	resetGrid();
 	initUI();
 	
 	store = new Store();
 });
+
+function resetGrid() {
+  setupGrid();
+  drawGrid();	
+	bricksOnGrid = [];
+}
 
 function initUI() {
 	
@@ -51,11 +56,7 @@ function initUI() {
 	
 	$("#clear-track").click(function(event) {
 		event.preventDefault();
-		
-		setupGrid();
-		drawGrid();
-		
-		bricksOnGrid = [];
+		resetGrid();
 	});
 	
 }
@@ -146,14 +147,12 @@ function addTrackToList(ID, name) {
 }
 
 function loadTrack(ID) {
-	setupGrid();
-  drawGrid();
-	
-	bricksOnGrid = store.getTrack(ID);
+	resetGrid();
 	
 	for (var i = 0; i < bricksOnGrid.length; i++) {
 		bricksOnGrid[i].draw(gridDrawingContext);
 	}
 	
+	bricksOnGrid = store.getTrack(ID);
 }
 

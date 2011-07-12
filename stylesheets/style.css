@@ -12,13 +12,11 @@ section#grid-container {
 section#bricks-container {
   width: 100px;
   margin-right: 50px;
-
   float: left;
 }
 
 section#tracks-container {  
   width: 300px;
-
   float: left;
 }
 
