@@ -35,7 +35,9 @@ function initUI() {
 	
 	$("#save-track").click(function(event) {
 		event.preventDefault();
-		store.saveTrack(bricksOnGrid);
+		
+		var trackID = store.saveTrack(bricksOnGrid);
+		addTrackToList(trackID, $("#track-name").val());
 	});
 	
 	$("#clear-track").click(function(event) {
@@ -120,5 +122,31 @@ function setBrick(buttonID) {
 			selectedBrickClass = Triangle;
 		break;
 	}
+}
+
+function addTrackToList(ID, name) {
+	var p = $("<p>");
+	var a = $('<a href="">Load</a>');
+	
+	a.click(function(event) {
+		event.preventDefault();
+		loadTrack(ID);	
+	});
+	
+	p.append(a).append(" - " + name);
+	
+	$("#tracks-container").append(p);
+}
+
+function loadTrack(ID) {
+	setupGrid();
+  drawGrid();
+	
+	bricksOnGrid = store.getTrack(ID);
+	
+	for (var i = 0; i < bricksOnGrid.length; i++) {
+		bricksOnGrid[i].draw(gridDrawingContext);
+	}
+	
 }
 
