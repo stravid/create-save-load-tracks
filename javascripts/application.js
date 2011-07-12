@@ -2,18 +2,17 @@ var gridCanvasElement;
 var gridDrawingContext;
 
 // FIXME: calculate numberOf from width / height?
-var numberOfColumns = 10;
-var numberOfRows = 15;
-var brickSize = 30;
-var gridWidth = numberOfColumns * brickSize;
-var gridHeight = numberOfRows * brickSize;
+var NUMBER_OF_COLUMNS = 10;
+var NUMBER_OF_ROWS = 15;
+var BRICK_SIZE = 30;
+
+var gridWidth = NUMBER_OF_COLUMNS * BRICK_SIZE;
+var gridHeight = NUMBER_OF_ROWS * BRICK_SIZE;
 var canvasWidth = 301;
 var canvasHeight = 451;
-
 var selectedBrickClass = null;
 var bricksOnGrid = [];
 var currentButton = null;
-
 var store;
 
 $(document).ready(function() {
@@ -80,22 +79,22 @@ function drawGrid() {
   gridDrawingContext.lineTo(0, gridHeight);
   gridDrawingContext.lineTo(0, 0);
 
-  for (var column = 0; column < numberOfColumns; column++) {
-    gridDrawingContext.moveTo(column * brickSize, 0);
-    gridDrawingContext.lineTo(column * brickSize, gridHeight);
+  for (var column = 0; column < NUMBER_OF_COLUMNS; column++) {
+    gridDrawingContext.moveTo(column * BRICK_SIZE, 0);
+    gridDrawingContext.lineTo(column * BRICK_SIZE, gridHeight);
   }
 
-  for (var row = 0; row < numberOfRows; row++) {
-    gridDrawingContext.moveTo(0, row * brickSize);
-    gridDrawingContext.lineTo(gridWidth, row * brickSize);
+  for (var row = 0; row < NUMBER_OF_ROWS; row++) {
+    gridDrawingContext.moveTo(0, row * BRICK_SIZE);
+    gridDrawingContext.lineTo(gridWidth, row * BRICK_SIZE);
   }
 
   gridDrawingContext.stroke();
 };
 
 function onGridClicked(event) {
-  var column = Math.floor(event.offsetX / brickSize);
-  var row = Math.floor(event.offsetY / brickSize);
+  var column = Math.floor(event.offsetX / BRICK_SIZE);
+  var row = Math.floor(event.offsetY / BRICK_SIZE);
 	
   createBrickAt(column, row);
 }
@@ -149,10 +148,10 @@ function addTrackToList(ID, name) {
 function loadTrack(ID) {
 	resetGrid();
 	
+	bricksOnGrid = store.getTrack(ID);
+	
 	for (var i = 0; i < bricksOnGrid.length; i++) {
 		bricksOnGrid[i].draw(gridDrawingContext);
 	}
-	
-	bricksOnGrid = store.getTrack(ID);
 }
 

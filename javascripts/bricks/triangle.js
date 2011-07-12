@@ -8,13 +8,13 @@ Triangle.prototype.draw = function(context) {
 	
   context.save();
 	
-	context.translate(this.column * brickSize, this.row * brickSize);
+	context.translate(this.column * BRICK_SIZE, this.row * BRICK_SIZE);
   context.beginPath();
 	
   context.fillColor = 0;
   context.moveTo(0, 0);
-  context.lineTo(brickSize, brickSize);
-  context.lineTo(0, brickSize);
+  context.lineTo(BRICK_SIZE, BRICK_SIZE);
+  context.lineTo(0, BRICK_SIZE);
 	
   context.closePath();
 	
