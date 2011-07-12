@@ -14,11 +14,15 @@ var selectedBrickClass = null;
 var bricksOnGrid = [];
 var currentButton = null;
 
+var store;
+
 $(document).ready(function() {
   setupGrid();
   drawGrid();
 	
 	initUI();
+	
+	store = new Store();
 });
 
 function initUI() {
@@ -27,6 +31,8 @@ function initUI() {
 	
 	document.getElementById("square-brick").onmouseup = function() { setBrick("square-brick") };
 	document.getElementById("triangle-brick").onmouseup = function() { setBrick("triangle-brick") };
+	
+	document.getElementById("save-track").onmouseup = onSaveTrack;
 	
 }
 
@@ -61,6 +67,10 @@ function drawGrid() {
 
   gridDrawingContext.stroke();
 };
+
+function onSaveTrack() {
+	store.saveTrack(bricksOnGrid);
+}
 
 function onGridClicked(event) {
   var column = Math.floor(event.offsetX / brickSize);

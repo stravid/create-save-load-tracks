@@ -14,15 +14,18 @@
     <section id="grid-container">
       <canvas id="grid"></canvas>
       <form>
-        <button id="clear">Clear</button>
-        <button id="save">Save</button>
+        <button id="clear-track">Clear</button>
+        <button id="save-track">Save</button>
+        
         <input id="track-name" type="text" placeholder="Track Name"/>
       </form>
     </section>
 
     <section id="bricks-container">
-      <button id="square-brick">Square</button>
-      <button id="triangle-brick">Triangle</button>
+      <form>
+        <button id="square-brick">Square</button>
+        <button id="triangle-brick">Triangle</button>
+      </form>
     </section>
 
     <section id="tracks-container">
@@ -43,6 +46,7 @@
     <script src="javascripts/jquery.js"></script>
     <script src="javascripts/bricks/square.js"></script>
     <script src="javascripts/bricks/triangle.js"></script>
+    <script src="javascripts/store.js"></script>
     <script src="javascripts/application.js"></script>
 
   </body>
