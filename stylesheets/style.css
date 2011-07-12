@@ -22,9 +22,6 @@ section#tracks-container {
   float: left;
 }
 
-canvas#grid {
-}
-
 button#save, input#track-name {
   float: right;
 }
