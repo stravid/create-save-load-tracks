@@ -2,11 +2,16 @@ var Triangle = function() {
   this.row = 0;
   this.column = 0;
 	this.type = "Triangle";
+	this.rotation = 0;
 }
 
 Triangle.prototype.draw = function(context) {
 	
   context.save();
+	
+	context.translate(BRICK_SIZE / 2, BRICK_SIZE / 2);
+  context.rotate(this.rotation * (Math.PI / 180));
+  context.translate(- BRICK_SIZE / 2, - BRICK_SIZE / 2);
 	
 	context.translate(this.column * BRICK_SIZE, this.row * BRICK_SIZE);
   context.beginPath();

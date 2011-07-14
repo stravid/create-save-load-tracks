@@ -1,22 +1,26 @@
-var gridCanvasElement;
-var gridDrawingContext;
+
 
 // FIXME: calculate numberOf from width / height?
 var NUMBER_OF_COLUMNS = 10;
 var NUMBER_OF_ROWS = 15;
 var BRICK_SIZE = 30;
 
+// DOM Elements
+var gridCanvasElement;
+var gridDrawingContext;
+var currentButton;
+
 var gridWidth = NUMBER_OF_COLUMNS * BRICK_SIZE;
 var gridHeight = NUMBER_OF_ROWS * BRICK_SIZE;
 var canvasWidth = 301;
 var canvasHeight = 451;
+
 var selectedBrickClass = null;
 var bricksOnGrid = [];
-var currentButton = null;
+
 var store;
 
 $(document).ready(function() {
-
 	resetGrid();
 	initUI();
 	
@@ -96,7 +100,15 @@ function onGridClicked(event) {
   var column = Math.floor(event.offsetX / BRICK_SIZE);
   var row = Math.floor(event.offsetY / BRICK_SIZE);
 	
-  createBrickAt(column, row);
+	var selectedBrick = getBrickAt(column, row);
+	
+	if (selectedBrick) {
+		selectedBrick.rotation += 90;
+		
+		drawAll();
+	} else {
+ 		createBrickAt(column, row);
+	}
 }
 
 function createBrickAt(column, row) {
@@ -131,13 +143,23 @@ function setBrick(buttonID) {
 	}
 }
 
+function getBrickAt(column, row) {
+	for (var i = 0; i < bricksOnGrid.length; i++) {
+		if (bricksOnGrid[i].column === column && bricksOnGrid[i].row === row) {
+			return bricksOnGrid[i];
+		}
+	}
+	
+	return null;
+}
+
 function addTrackToList(ID, name) {
 	var p = $("<p>");
 	var a = $('<a href="">Load</a>');
 	
 	a.click(function(event) {
 		event.preventDefault();
-		loadTrack(ID);	
+		loadTrack(ID);
 	});
 	
 	p.append(a).append(" - " + name);
@@ -149,6 +171,15 @@ function loadTrack(ID) {
 	resetGrid();
 	
 	bricksOnGrid = store.getTrack(ID);
+	
+	for (var i = 0; i < bricksOnGrid.length; i++) {
+		bricksOnGrid[i].draw(gridDrawingContext);
+	}
+}
+
+function drawAll() {
+	setupGrid();
+  drawGrid();	
 	
 	for (var i = 0; i < bricksOnGrid.length; i++) {
 		bricksOnGrid[i].draw(gridDrawingContext);
