@@ -8,12 +8,13 @@ var Triangle = function() {
 Triangle.prototype.draw = function(context) {
 	
   context.save();
+
+	context.translate(this.column * BRICK_SIZE, this.row * BRICK_SIZE);
 	
 	context.translate(BRICK_SIZE / 2, BRICK_SIZE / 2);
-  context.rotate(this.rotation * (Math.PI / 180));
+  context.rotate(this.rotation * Math.PI / 180);
   context.translate(- BRICK_SIZE / 2, - BRICK_SIZE / 2);
 	
-	context.translate(this.column * BRICK_SIZE, this.row * BRICK_SIZE);
   context.beginPath();
 	
   context.fillColor = 0;
