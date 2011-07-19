@@ -97,6 +97,7 @@ function drawGrid() {
 };
 
 function onGridClicked(event) {
+	// event offsetX does not work in all browsers
   var column = Math.floor(event.offsetX / BRICK_SIZE);
   var row = Math.floor(event.offsetY / BRICK_SIZE);
 	

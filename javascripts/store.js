@@ -7,8 +7,10 @@ Store.prototype.saveTrack = function(brickArray) {
 	var brickValues = brickArray.map(this.getDataForBrick);
 	var trackJSON = JSON.stringify(brickArray);
 	
-	/* this would be where one could send the data to an actual 
-	   database - in this example it's only saved array  */
+	/* 
+		this would be where one could send the data to an actual 
+	  database - in this example it's only saved array  
+	*/
 	this.tracks.push(trackJSON);
 
 	return this.tracks.length - 1;
