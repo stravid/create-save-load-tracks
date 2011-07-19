@@ -1,26 +1,23 @@
 
-
-// FIXME: calculate numberOf from width / height?
 var NUMBER_OF_COLUMNS = 10;
 var NUMBER_OF_ROWS = 15;
 var BRICK_SIZE = 30;
+
+var store;
+var grid;
 
 // DOM Elements
 var canvas;
 var context;
 var currentButton;
 
+// Grid Variables
 var gridWidth = NUMBER_OF_COLUMNS * BRICK_SIZE;
 var gridHeight = NUMBER_OF_ROWS * BRICK_SIZE;
 var canvasWidth = 301;
 var canvasHeight = 451;
 
 var selectedBrickClass = null;
-
-//var bricksOnGrid = [];
-
-var store;
-var grid;
 
 $(document).ready(function() {
 	canvas = document.getElementById('grid');
@@ -131,17 +128,17 @@ function setBrick(buttonID) {
 }
 
 function addTrackToList(ID, name) {
-	var p = $("<p>");
-	var a = $('<a href="">Load</a>');
+	var entry = $("<p>");
+	var link = $('<a href="">Load</a>');
 	
-	a.click(function(event) {
+	link.click(function(event) {
 		event.preventDefault();
 		loadTrack(ID);
 	});
 	
-	p.append(a).append(" - " + name);
+	entry.append(link).append(" - " + name);
 	
-	$("#tracks-container").append(p);
+	$("#tracks-container").append(entry);
 }
 
 function loadTrack(ID) {
@@ -149,4 +146,3 @@ function loadTrack(ID) {
 	
 	draw();
 }
-
