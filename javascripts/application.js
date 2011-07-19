@@ -69,13 +69,15 @@ function initUI() {
 	$("#save-track").click(function(event) {
 		event.preventDefault();
 		
-		var trackID = store.saveTrack(bricksOnGrid);
+		var trackID = store.saveTrack(grid.bricks);
 		addTrackToList(trackID, $("#track-name").val());
 	});
 	
 	$("#clear-track").click(function(event) {
 		event.preventDefault();
-		resetGrid();
+		
+		grid.clear();
+		draw();
 	});
 	
 }
@@ -89,8 +91,7 @@ function onGridClicked(event) {
 	
 	if (selectedBrick) {
 		selectedBrick.rotation += 90;
-		
-		clearCanvas();
+
 		draw();
 		
 	} else {
@@ -144,12 +145,8 @@ function addTrackToList(ID, name) {
 }
 
 function loadTrack(ID) {
-	resetGrid();
+	grid.bricks = store.getTrack(ID);
 	
-	bricksOnGrid = store.getTrack(ID);
-	
-	for (var i = 0; i < bricksOnGrid.length; i++) {
-		bricksOnGrid[i].draw(gridDrawingContext);
-	}
+	draw();
 }
 
