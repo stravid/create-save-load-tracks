@@ -128,6 +128,10 @@ function setBrick(buttonID) {
 		case "circle-brick":
 			selectedBrickClass = Circle;
 		break;
+		
+		case "curve-brick":
+			selectedBrickClass = Curve;
+		break;
 	}
 }
 
