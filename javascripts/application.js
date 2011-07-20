@@ -62,6 +62,11 @@ function initUI() {
 		setBrick("triangle-brick");
 	});
 	
+	$("#circle-brick").click(function(event) {
+		event.preventDefault();
+		setBrick("circle-brick");
+	});
+	
 	/* ---- Clear & Save Button Handlers ----*/
 	$("#save-track").click(function(event) {
 		event.preventDefault();
@@ -123,6 +128,10 @@ function setBrick(buttonID) {
 		
 		case "triangle-brick":
 			selectedBrickClass = Triangle;
+		break;
+		
+		case "circle-brick":
+			selectedBrickClass = Circle;
 		break;
 	}
 }
