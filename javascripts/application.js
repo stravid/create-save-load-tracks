@@ -52,19 +52,11 @@ function initUI() {
 	canvas.onmouseup = onGridClicked;
 	
 	/* ---- Brick Button Handler ----*/
-	$("#square-brick").click(function(event) {
+	$("#bricks-container button").click(function(event) {
 		event.preventDefault();
-		setBrick("square-brick");
-	});
-	
-	$("#triangle-brick").click(function(event) {
-		event.preventDefault();
-		setBrick("triangle-brick");
-	});
-	
-	$("#circle-brick").click(function(event) {
-		event.preventDefault();
-		setBrick("circle-brick");
+		
+		var id = $(this).attr("id");
+		setBrick(id);
 	});
 	
 	/* ---- Clear & Save Button Handlers ----*/
