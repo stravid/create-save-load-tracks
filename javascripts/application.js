@@ -49,7 +49,7 @@ function clearCanvas() {
 function initUI() {
 	
 	/* ---- Canvas Handler ----*/
-	canvas.onmouseup = onGridClicked;
+	$(canvas).click(onGridClicked);
 	
 	/* ---- Brick Button Handler ----*/
 	$("#bricks-container button").click(function(event) {
@@ -77,9 +77,12 @@ function initUI() {
 }
 
 function onGridClicked(event) {
-	// event offsetX does not work in all browsers
-  var column = Math.floor(event.offsetX / BRICK_SIZE);
-  var row = Math.floor(event.offsetY / BRICK_SIZE);
+
+	var mouseX = event.offsetX || event.layerX;
+	var mouseY = event.offsetY || event.layerY;
+
+  var column = Math.floor(mouseX / BRICK_SIZE);
+  var row = Math.floor(mouseY / BRICK_SIZE);
 	
 	var selectedBrick = grid.getBrickAt(column, row);
 	
