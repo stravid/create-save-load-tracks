@@ -1,4 +1,3 @@
-
 var NUMBER_OF_COLUMNS = 10;
 var NUMBER_OF_ROWS = 15;
 var BRICK_SIZE = 30;
@@ -14,8 +13,8 @@ var currentButton;
 // Grid Variables
 var gridWidth = NUMBER_OF_COLUMNS * BRICK_SIZE;
 var gridHeight = NUMBER_OF_ROWS * BRICK_SIZE;
-var canvasWidth = 301;
-var canvasHeight = 451;
+var canvasWidth = gridWidth + 1;
+var canvasHeight = gridHeight + 1;
 
 var selectedBrickClass = null;
 
