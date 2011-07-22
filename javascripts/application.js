@@ -1,23 +1,23 @@
-
+// Constants
 var NUMBER_OF_COLUMNS = 10;
 var NUMBER_OF_ROWS = 15;
 var BRICK_SIZE = 30;
 
-var store;
-var grid;
-
-// DOM Elements
-var canvas;
-var context;
-var currentButton;
-
-// Grid Variables
+// Grid  variables
 var gridWidth = NUMBER_OF_COLUMNS * BRICK_SIZE;
 var gridHeight = NUMBER_OF_ROWS * BRICK_SIZE;
-var canvasWidth = 301;
-var canvasHeight = 451;
 
+// Canvas variables
+var canvas;
+var context;
+var canvasWidth = gridWidth + 1;
+var canvasHeight = gridHeight + 1;
+
+// Application variables
+var store = null;
+var grid = null;
 var selectedBrickClass = null;
+var currentButton = null;
 
 $(document).ready(function() {
 	canvas = document.getElementById('grid');
