@@ -8,16 +8,13 @@ var Grid = function(width, height, cellSize) {
 }
 
 Grid.prototype.drawGrid = function(context) {
-  context.beginPath();
-
-  context.moveTo(0, 0);
-  context.lineTo(this.width, 0);
-  context.lineTo(this.width, this.height);
-  context.lineTo(0, this.height);
-  context.lineTo(0, 0);
+  
+  context.strokeRect(0, 0, this.width, this.height);
 
 	var numberOfColumns = this.width / this.cellSize;
 	var numberOfRows = this.height / this.cellSize;
+
+	context.beginPath();
 
   for (var column = 0; column < numberOfColumns; column++) {
     context.moveTo(column * this.cellSize, 0);
