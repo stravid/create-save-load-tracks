@@ -64,7 +64,8 @@ function initUI() {
 		event.preventDefault();
 		
 		var trackID = store.saveTrack(grid.bricks);
-		addTrackToList(trackID, $("#track-name").val());
+		var trackName = $("#track-name").val();
+		addTrackToList(trackID, trackName);
 	});
 	
 	$("#clear-track").click(function(event) {
