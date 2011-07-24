@@ -1,20 +1,20 @@
 var Grid = function(width, height, cellSize) {
-	
-	this.width = width;
-	this.height = height;
-	this.cellSize = cellSize;
-	
-	this.bricks = [];
+
+  this.width = width;
+  this.height = height;
+  this.cellSize = cellSize;
+
+  this.bricks = [];
 }
 
 Grid.prototype.drawGrid = function(context) {
   
   context.strokeRect(0, 0, this.width, this.height);
 
-	var numberOfColumns = this.width / this.cellSize;
-	var numberOfRows = this.height / this.cellSize;
+  var numberOfColumns = this.width / this.cellSize;
+  var numberOfRows = this.height / this.cellSize;
 
-	context.beginPath();
+  context.beginPath();
 
   for (var column = 0; column < numberOfColumns; column++) {
     context.moveTo(column * this.cellSize, 0);
@@ -30,30 +30,30 @@ Grid.prototype.drawGrid = function(context) {
 }
 
 Grid.prototype.clear = function() {
-	this.bricks = [];
+  this.bricks = [];
 }
 
 Grid.prototype.draw = function(context) {
-	
-	this.drawGrid(context);
-	
-	for (var i = 0; i < this.bricks.length; i++) {
-		this.bricks[i].draw(context);
-	}
+
+  this.drawGrid(context);
+
+  for (var i = 0; i < this.bricks.length; i++) {
+    this.bricks[i].draw(context);
+  }
 }
 
 Grid.prototype.addBrick = function(brick, context) {
-	this.bricks.push(brick);
-	
-	brick.draw(context);
+  this.bricks.push(brick);
+
+  brick.draw(context);
 }
 
 Grid.prototype.getBrickAt = function(column, row) {
-	for (var i = 0; i < this.bricks.length; i++) {
-		if (this.bricks[i].column === column && this.bricks[i].row === row) {
-			return this.bricks[i];
-		}
-	}
-	
-	return null;
+  for (var i = 0; i < this.bricks.length; i++) {
+    if (this.bricks[i].column === column && this.bricks[i].row === row) {
+      return this.bricks[i];
+    }
+  }
+
+  return null;
 }
